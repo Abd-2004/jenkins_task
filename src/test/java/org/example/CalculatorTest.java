@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class CalculatorTest {
     Calculator calculator;
@@ -95,5 +96,10 @@ public class CalculatorTest {
         double expected = -2.1333;
         double actual = calculator.divide(3.2, -1.5);
         assertEquals(expected, actual, 0.0001);
+    }
+
+    @Test
+    public void divideByZero() {
+        assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
     }
 }
